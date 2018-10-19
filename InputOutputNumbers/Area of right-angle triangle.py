@@ -1,6 +1,7 @@
 # Read the numbers b and h like this:
-b = int(input())
-h = int(input())
+sideOfTheTriangle = int(input())
+height = int(input())
+
 # Print the result with print()
-s= b * h /2
-print(s)
+areaOfTriangle = b * h / 2
+print(areaOfTriangle)
