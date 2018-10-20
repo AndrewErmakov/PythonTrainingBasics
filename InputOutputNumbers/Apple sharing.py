@@ -2,8 +2,8 @@
 students = int(input())
 apples = int(input())
 
-apples_for_student = k // n
-apples_in_basket = k % n
+apples_for_student = apples // students
+apples_in_basket = apples % students
 # Print the result with print()
 
 # Example of division, integer division and remainder:
