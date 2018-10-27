@@ -1,10 +1,10 @@
-Horiz1 = int(input())
-Vertic1 = int(input())
+horizontal1 = int(input())
+vertical1 = int(input())
 
-Horiz2 = int(input())
-Vertic2 = int(input())
+horizontal2 = int(input())
+vertical2 = int(input())
 
-if Horiz1 == Horiz2 or Vertic1 == Vertic2:
+if horizontal1 == horizontal2 or vertical1 == vertical2:
     print('YES')
 else:
     print('NO')

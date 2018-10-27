@@ -1,9 +1,9 @@
 a = int(input())
 b = int(input())
 c = int(input())
-min = a
-if b < min:
-    min = b
-if c < min:
-    min = c
-print(min)
+minimal = a
+if b < minimal:
+    minimal = b
+if c < minimal:
+    minimal = c
+print(minimal)
