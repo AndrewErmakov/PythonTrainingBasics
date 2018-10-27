@@ -1,2 +1,4 @@
 number = int(input())
-print((number % 10) + (number // 10 % 10)+(number // 100))
+sum_of_digit = number % 10 + number // 10 % 10 + number // 100
+print(sum_of_digit)
+
