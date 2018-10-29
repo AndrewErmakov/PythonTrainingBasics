@@ -1,3 +1,3 @@
 sentence = input()
-
-print(sentence.count(' ') + 1)
+number_of_words = sentence.count(' ') + 1
+print(number_of_words)
