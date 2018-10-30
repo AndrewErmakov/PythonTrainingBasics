@@ -8,6 +8,6 @@ elif sentence.count('f') == 0:
 
 elif sentence.count('f') > 1:
     firstIndexOfLetterF = sentence.find('f')
-    secondPartOfSentence = sentence[firstIndexOfLetterF+1:]
+    secondPartOfSentence = sentence[firstIndexOfLetterF + 1:]
     secondIndexOfLetterF = secondPartOfSentence.find('f')
     print(secondIndexOfLetterF + (len(sentence) - len(secondPartOfSentence)))
