@@ -7,7 +7,6 @@ print(sentence[:-2])
 
 print(sentence[::2])
 
-
 print(sentence[1::2])
 print(sentence[::-1])
 print(sentence[::-2])
