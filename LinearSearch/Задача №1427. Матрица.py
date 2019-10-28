@@ -42,3 +42,4 @@ def determination_saddle_points_of_a_matrix(array_numbers: list = filling_list_n
 
 
 print(determination_saddle_points_of_a_matrix())
+
