@@ -11,3 +11,4 @@ num1, num2 = map(int, input().split())
 result = bin_coeff(num1, num2)
 
 print(result)
+
