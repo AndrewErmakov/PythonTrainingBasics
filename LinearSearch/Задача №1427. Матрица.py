@@ -18,19 +18,25 @@ def determination_saddle_points_of_a_matrix(array_numbers: list = filling_list_n
                                             num_colmns: int = number_columns):
     """Определение количества седловых точек"""
     count_saddle_points = 0
+    min_elems_in_lines = []
+    max_elems_in_column = []
 
-    for index in range(num_lines * num_colmns):
-        elems_in_line = set()
-        elems_in_column = set()
+    for i in range(num_lines):
+        min_elems_in_lines.append(min(array_numbers[i]))
 
-        for i_column in range(num_colmns):
-            elems_in_line.add(array_numbers[index // num_colmns][i_column])
+    for j in range(num_colmns):
+        elems_in_column = []
+        for i in range(num_lines):
+            elems_in_column.append(array_numbers[i][j])
 
-        for i_line in range(num_lines):
-            elems_in_column.add(array_numbers[i_line][index % num_colmns])
+        max_elems_in_column.append(max(elems_in_column))
 
-        if max(elems_in_column) == min(elems_in_line):
-            count_saddle_points += 1
+    for i in range(num_lines):
+        for j in range(num_colmns):
+            if min_elems_in_lines[i] == max_elems_in_column[j]:
+                count_saddle_points += 1
+
+
 
     return count_saddle_points
 
