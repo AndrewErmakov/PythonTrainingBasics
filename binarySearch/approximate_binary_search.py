@@ -41,3 +41,4 @@ list_numbers_2 = [int(i) for i in input().split()]
 
 for i in range(count_in_list_2):
     print(binary_search(list_numbers_1, list_numbers_2[i]))
+
