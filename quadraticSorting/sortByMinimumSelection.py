@@ -1,4 +1,4 @@
-def sort_selection(nums: list, count_nums: int):
+def sort_selection_by_min(nums: list, count_nums: int):
     for i in range(count_nums):
 
         index_lowest_value = i
@@ -15,5 +15,5 @@ def sort_selection(nums: list, count_nums: int):
 count_numbers = int(input())
 list_numbers = list(map(int, input().split()))
 
-for elem in sort_selection(list_numbers, count_numbers):
+for elem in sort_selection_by_min(list_numbers, count_numbers):
     print(elem, end=' ')
