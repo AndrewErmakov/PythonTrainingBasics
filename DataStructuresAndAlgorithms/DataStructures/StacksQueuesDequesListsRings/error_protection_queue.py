@@ -5,7 +5,7 @@
 SIZE_QUEUE = 100000
 
 
-class SimpleQueue:
+class ErrorProtectionQueue:
     def __init__(self):
         self.list_numbers = [None] * SIZE_QUEUE
         self.start = self.finish = 0
@@ -42,7 +42,7 @@ class SimpleQueue:
 
 if __name__ == '__main__':
     command = input().split()
-    queue = SimpleQueue()
+    queue = ErrorProtectionQueue()
     while 'exit' not in command:
         if command[0] == 'push':
             print(queue.push(int(command[1])))
