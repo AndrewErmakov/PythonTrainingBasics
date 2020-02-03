@@ -1,4 +1,9 @@
-class SimpleStack:
+# Задача №55. Стек с защитой от ошибок
+# https://informatics.mccme.ru/mod/statements/view3.php?id=207&chapterid=55#1
+
+
+
+class ErrorProtectionStack:
     def __init__(self):
         self.list_numbers = []
 
@@ -28,26 +33,29 @@ class SimpleStack:
 
 if __name__ == '__main__':
     command = input().split()
-    simple_stack = SimpleStack()
+    stack = ErrorProtectionStack()
 
     while 'exit' not in command:
         if command[0] == 'push':
-            print(simple_stack.push(int(command[1])))
+            print(stack.push(int(command[1])))
 
         elif command[0] == 'size':
-            print(simple_stack.size())
+            print(stack.size())
 
         elif command[0] == 'pop':
-            print(simple_stack.pop())
+            print(stack.pop())
 
         elif command[0] == 'back':
-            print(simple_stack.back())
+            print(stack.back())
 
         elif command[0] == 'clear':
-            print(simple_stack.clear())
+            print(stack.clear())
 
         command = input().split()
 
     print('bye')
+
+
+
 
 

@@ -14,7 +14,7 @@ class UnlimitedStack:
         return 'ok'
 
     def stack_overflow_check(self):
-        if self.end_position == 1000:
+        if self.end_position == len(self.list_numbers):
             self.list_numbers.extend([None] * 1000)
 
     def is_stack_empty(self):

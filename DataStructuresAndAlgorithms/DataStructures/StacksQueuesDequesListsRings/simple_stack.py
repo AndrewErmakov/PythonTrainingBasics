@@ -1,3 +1,8 @@
+# Задача №54. Простой стек
+# https://informatics.mccme.ru/mod/statements/view3.php?id=207&chapterid=54#1
+
+
+
 class SimpleStack:
     def __init__(self):
         self.list_numbers = []
