@@ -1,32 +1,32 @@
 # Задача №57. Простая очередь
 # https://informatics.mccme.ru/mod/statements/view3.php?id=207&chapterid=57#1
 
+SIZE_QUEUE = 100000
+
 
 class SimpleQueue:
     def __init__(self):
-        self.list_numbers = []
-        self.start_position = self.end_position = 0
+        self.list_numbers = [None] * SIZE_QUEUE
+        self.start = self.finish = 0
 
     def push(self, number):
-        self.list_numbers.append(number)
-        self.end_position += 1
+        self.list_numbers[self.finish] = number
+        self.finish += 1
         return 'ok'
 
     def pop(self):
-        element = self.list_numbers[0]
-        self.list_numbers = self.list_numbers[1:]
-        self.end_position -= 1
-        return element
+        first_elem = self.list_numbers[self.start]
+        self.start += 1
+        return first_elem
 
     def front(self):
-        return self.list_numbers[0]
+        return self.list_numbers[self.start]
 
     def size(self):
-        return self.end_position
+        return self.finish - self.start
 
     def clear(self):
-        self.list_numbers = []
-        self.start_position = self.end_position = 0
+        self.start = self.finish = 0
         return 'ok'
 
 
@@ -52,5 +52,3 @@ if __name__ == '__main__':
         command = input().split()
 
     print('bye')
-
-
