@@ -4,43 +4,40 @@
 
 class SimpleDeque:
     def __init__(self):
-        self.deque = []
-        self.size = 0
+        self.deque = [None] * 300
+        self.start = self.end = 150
 
     def push_back(self, number):
-        self.deque.append(number)
-        self.size += 1
+        self.deque[self.end] = number
+        self.end += 1
         return 'ok'
 
     def push_front(self, number):
-        self.deque = [number] + self.deque
-        self.size += 1
+        self.start -= 1
+        self.deque[self.start] = number
         return 'ok'
 
     def pop_front(self):
-        element = self.deque[0]
-        self.deque = self.deque[1:]
-        self.size -= 1
+        element = self.deque[self.start]
+        self.start += 1
         return element
 
     def pop_back(self):
-        element = self.deque[-1]
-        self.deque = self.deque[:-1]
-        self.size -= 1
+        element = self.deque[self.end - 1]
+        self.end -= 1
         return element
 
     def front(self):
-        return self.deque[0]
+        return self.deque[self.start]
 
     def back(self):
-        return self.deque[-1]
+        return self.deque[self.end - 1]
 
     def size_deque(self):
-        return self.size
+        return self.end - self.start
 
     def clear(self):
-        self.deque = []
-        self.size = 0
+        self.start = self.end = 150
         return 'ok'
 
 
@@ -74,4 +71,5 @@ if __name__ == '__main__':
 
         command = input().split()
 
-    print('bye')
+print('bye')
+
