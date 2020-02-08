@@ -2,18 +2,21 @@
 # https://informatics.mccme.ru/mod/statements/view3.php?id=207&chapterid=61#1
 
 
-class SimpleDeque:
+class ErrorProtectionDeque:
     def __init__(self):
-        self.deque = []
+        self.deque = [None] * 3000
+        self.start = self.end = 1500
         self.size = 0
 
     def push_back(self, number):
-        self.deque.append(number)
+        self.deque[self.end] = number
+        self.end += 1
         self.size += 1
         return 'ok'
 
     def push_front(self, number):
-        self.deque = [number] + self.deque
+        self.start -= 1
+        self.deque[self.start] = number
         self.size += 1
         return 'ok'
 
@@ -21,8 +24,8 @@ class SimpleDeque:
         if self.is_deque_empty():
             return 'error'
         else:
-            element = self.deque[0]
-            self.deque = self.deque[1:]
+            element = self.deque[self.start]
+            self.start += 1
             self.size -= 1
             return element
 
@@ -30,8 +33,8 @@ class SimpleDeque:
         if self.is_deque_empty():
             return 'error'
         else:
-            element = self.deque[-1]
-            self.deque = self.deque[:-1]
+            element = self.deque[self.end - 1]
+            self.end -= 1
             self.size -= 1
             return element
 
@@ -39,28 +42,29 @@ class SimpleDeque:
         if self.is_deque_empty():
             return 'error'
         else:
-            return self.deque[0]
+            return self.deque[self.start]
 
     def back(self):
         if self.is_deque_empty():
             return 'error'
         else:
-            return self.deque[-1]
+            return self.deque[self.end - 1]
 
     def size_deque(self):
         return self.size
 
     def clear(self):
-        self.deque = []
+        self.start = self.end = 1500
         self.size = 0
         return 'ok'
 
     def is_deque_empty(self):
+        # return self.end - self.start == 0
         return self.size == 0
 
 
 if __name__ == '__main__':
-    deque = SimpleDeque()
+    deque = ErrorProtectionDeque()
     command = input().split()
     while 'exit' not in command:
         if command[0] == 'push_front':
@@ -89,4 +93,5 @@ if __name__ == '__main__':
 
         command = input().split()
 
-    print('bye')
+print('bye')
+
