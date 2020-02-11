@@ -1,3 +1,7 @@
+# Задача №52. Постфиксная запись
+# https://informatics.mccme.ru/mod/statements/view3.php?id=206&chapterid=52#1
+
+
 class UnlimitedStack:
     def __init__(self):
         self.list_elements = [None] * 10
