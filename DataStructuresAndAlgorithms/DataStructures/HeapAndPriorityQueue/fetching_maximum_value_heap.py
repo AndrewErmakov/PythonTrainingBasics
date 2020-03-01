@@ -6,7 +6,6 @@ class Heap:
     def __init__(self, heap_elements, count_elements):
         self.heap_elements = heap_elements
         self.size_heap = count_elements
-        self.results = []
 
     def condition_absence_ancestors(self, position):
         """
