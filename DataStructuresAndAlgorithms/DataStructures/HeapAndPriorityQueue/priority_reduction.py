@@ -44,6 +44,8 @@ class SimpleHeap:
                     self.heap_elements[pos], self.heap_elements[2*pos + 1] = self.heap_elements[2*pos + 1], \
                                                                                self.heap_elements[pos]
                     pos = 2 * pos + 1
+                else:
+                    flag = False
 
         return pos + 1
 
