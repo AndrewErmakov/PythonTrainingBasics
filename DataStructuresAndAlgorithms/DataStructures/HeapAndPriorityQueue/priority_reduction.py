@@ -12,9 +12,8 @@ class SimpleHeap:
 
     def presence_right_child(self, right_child):
         return right_child < self.size_heap
-		
 
-    def sift_down(self, pos):
+    def sift_down(self, position):
         while self.presence_left_child(position):
             left_child = 2 * position + 1
             right_child = 2 * position + 2
