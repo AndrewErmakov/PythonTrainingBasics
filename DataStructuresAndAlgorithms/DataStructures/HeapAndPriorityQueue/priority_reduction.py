@@ -3,51 +3,33 @@
 
 
 class SimpleHeap:
-    def __init__(self, heap_elements):
+    def __init__(self, heap_elements, count_elements):
         self.heap_elements = heap_elements
-        self.size_heap = len(self.heap_elements)
-        # self.max_level = int(log2(self.size_heap))
+        self.size_heap = count_elements
 
-    def is_empty_heap(self):
-        return len(self.heap_elements) == 0
+    def presence_left_child(self, i):
+        return 2 * i + 1 < self.size_heap
 
-    def condition_absence_ancestors(self, position):
-        return 2 * position + 1 >= self.size_heap and 2 * position + 2 >= self.size_heap
-
-    def conditions_presence_one_descendant(self, position):
-        return 2 * position + 1 < self.size_heap <= 2 * position + 2
+    def presence_right_child(self, right_child):
+        return right_child < self.size_heap
+		
 
     def sift_down(self, pos):
-        # current_level = int(log2(pos + 1))
-        flag = True
-        while flag and not self.condition_absence_ancestors(pos):
-            if not self.conditions_presence_one_descendant(pos):
-                if self.heap_elements[pos] < self.heap_elements[2*pos + 1] and self.heap_elements[2*pos + 1] >= \
-                        self.heap_elements[2 * pos + 2]:
-                    self.heap_elements[pos], self.heap_elements[2 * pos + 1] = self.heap_elements[2*pos + 1], \
-                                                                               self.heap_elements[pos]
-                    pos = 2 * pos + 1
-                    # current_level += 1
+        while self.presence_left_child(position):
+            left_child = 2 * position + 1
+            right_child = 2 * position + 2
+            child_index = left_child
+            if self.presence_right_child(right_child) and self.heap_elements[right_child] > self.heap_elements[left_child]:
+                child_index = right_child
 
-                elif self.heap_elements[pos] < self.heap_elements[2*pos + 2] and self.heap_elements[2*pos + 2] >= \
-                        self.heap_elements[2*pos + 1]:
-                    self.heap_elements[pos], self.heap_elements[2*pos + 2] = self.heap_elements[2*pos + 2], \
-                                                                               self.heap_elements[pos]
-                    pos = 2 * pos + 2
-                    # current_level += 1
+            if self.heap_elements[position] >= self.heap_elements[child_index]:
+                break
+            self.heap_elements[position], self.heap_elements[child_index] = \
+                self.heap_elements[child_index], self.heap_elements[position]
 
-                else:
-                    flag = False
+            position = child_index
 
-            else:
-                if self.heap_elements[pos] < self.heap_elements[2*pos + 1]:
-                    self.heap_elements[pos], self.heap_elements[2*pos + 1] = self.heap_elements[2*pos + 1], \
-                                                                               self.heap_elements[pos]
-                    pos = 2 * pos + 1
-                else:
-                    flag = False
-
-        return pos + 1
+        return position + 1
 
     def main(self, variable_element_index, order_magnification):
         self.heap_elements[variable_element_index - 1] -= order_magnification
@@ -58,7 +40,7 @@ if __name__ == '__main__':
     number_elements = int(input())
 
     elements = [int(i) for i in input().split()]
-    heap = SimpleHeap(elements)
+    heap = SimpleHeap(elements, number_elements)
 
     count_requests = int(input())
     for _ in range(count_requests):
@@ -67,3 +49,5 @@ if __name__ == '__main__':
 
     for elem in heap.heap_elements:
         print(elem, end=' ')
+
+
