@@ -41,7 +41,7 @@ class BinaryTree:
 
         if x > parent_current_node.value:
             parent_current_node.right = Node(x)
-        else:
+        elif x < parent_current_node.value:
             parent_current_node.left = Node(x)
 
         if current_height > self.height_tree:
