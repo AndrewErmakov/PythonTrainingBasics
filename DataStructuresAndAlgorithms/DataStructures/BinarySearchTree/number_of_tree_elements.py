@@ -35,13 +35,13 @@ class BinaryTree:
             else:
                 break
 
-        if x != parent_current_node.value:
-            self.count_elements += 1
-
         if x > parent_current_node.value:
             parent_current_node.right = Node(x)
-        else:
+            self.count_elements += 1
+
+        elif x < parent_current_node.value:
             parent_current_node.left = Node(x)
+            self.count_elements += 1
 
 
 if __name__ == '__main__':
