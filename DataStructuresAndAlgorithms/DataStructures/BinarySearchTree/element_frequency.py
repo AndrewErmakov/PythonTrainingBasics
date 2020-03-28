@@ -40,12 +40,10 @@ class BinaryTree:
         if x > parent_current_node.value:
             parent_current_node.right = Node(x)
             self.count_elements += 1
-            parent_current_node.frequency = 1
 
         elif x < parent_current_node.value:
             parent_current_node.left = Node(x)
             self.count_elements += 1
-            parent_current_node.frequency = 1
 
     def delete_min_element(self):
         """
@@ -77,6 +75,7 @@ class BinaryTree:
             parent_node.left = child.left
             parent_node.right = child.right
             parent_node.value = child.value
+            parent_node.frequency = child.frequency
 
         self.count_elements -= 1
         return minimum_element_value, frequency_minimum_element
@@ -94,4 +93,3 @@ if __name__ == '__main__':
     for _ in range(count_elements):
         summary = binary_tree.delete_min_element()
         print(summary[0], summary[1])
-
