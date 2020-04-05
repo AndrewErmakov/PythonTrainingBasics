@@ -2,67 +2,83 @@
 # https://informatics.mccme.ru/mod/statements/view3.php?id=599&chapterid=764#1
 
 
-from math import log2
-
-
 class Node:
     def __init__(self, value: int):
         self.value: int = value
         self.left: Node = None
         self.right: Node = None
+        self.node_height = 0
+        self.is_balanced: bool = True
 
 
 class BinaryTree:
     def __init__(self):
         self.root: Node = None
-        self.count_elements: int = 0
-        self.height_tree: int = 0
 
     def add_element(self, x: int):
         if self.root is None:
             self.root: Node = Node(x)
-            self.count_elements += 1
-            self.height_tree += 1
             return
 
         current_node: Node = self.root
         parent_current_node: Node = None
-        current_height = 1
 
         while current_node is not None:
             parent_current_node = current_node
 
             if x > current_node.value:
                 current_node = current_node.right
-                current_height += 1
 
             elif x < current_node.value:
                 current_node = current_node.left
-                current_height += 1
 
             else:
                 break
 
         if x > parent_current_node.value:
             parent_current_node.right = Node(x)
-            self.count_elements += 1
 
         elif x < parent_current_node.value:
             parent_current_node.left = Node(x)
-            self.count_elements += 1
 
-        if current_height > self.height_tree:
-            self.height_tree = current_height
+    def visit(self, node: Node):
+        height = 1
+        if node.left is not None:
+            self.visit(node.left)
+            height = node.left.height + 1
 
-    def is_tree_balanced(self):
-        if self.height_tree != 0:
-            ideal_height_balanced_tree = int(log2(self.count_elements)) + 1
-            if ideal_height_balanced_tree == self.height_tree:
-                return 'YES'
+        if node.right is not None:
+            self.visit(node.right)
 
-            else:
-                return 'NO'
+            height = max(height, node.right.height + 1)
 
+        node.height = height
+
+    def check_is_balanced(self, node: Node):
+        left_height = 0
+        right_height = 0
+
+        left_balanced = True
+        right_balanced = True
+
+        if node.left is not None:
+            left_height = node.left.height
+            self.check_is_balanced(node.left)
+            left_balanced = node.left.is_balanced
+
+        if node.right is not None:
+            right_height = node.right.height
+            self.check_is_balanced(node.right)
+            right_balanced = node.right.is_balanced
+
+        node.is_balanced = right_balanced and left_balanced and abs(right_height - left_height) <= 1
+        return node.is_balanced
+
+    def summary(self):
+        self.visit(self.root)
+        result = self.check_is_balanced(self.root)
+        if result:
+            return 'YES'
         else:
             return 'NO'
 
@@ -74,6 +90,4 @@ if __name__ == '__main__':
     while elements[k] != 0:
         binary_tree.add_element(elements[k])
         k += 1
-
-    print(binary_tree.is_tree_balanced())
-    # print(binary_tree.height_tree)
+    print(binary_tree.summary())
