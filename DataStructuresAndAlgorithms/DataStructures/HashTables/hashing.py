@@ -1,3 +1,7 @@
+# Задача №744. Хеширование
+# https://informatics.mccme.ru/mod/statements/view.php?id=601#1
+
+
 class HashTable:
     def __init__(self):
         self.size = 10
