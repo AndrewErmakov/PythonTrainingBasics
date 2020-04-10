@@ -4,20 +4,25 @@
 
 class HashTable:
     def __init__(self):
-        self.size = 10
+        self.count_slices = 10
+        self.size_each_slice = 100000
         self.table = []
+        self.count_items_each_slice = [0] * self.count_slices
 
     def create_table(self):
-        for i in range(self.size):
-            self.table.append([])
+        for i in range(self.count_slices):
+            self.table.append([None] * self.size_each_slice)
 
     def add_element(self, item):
-        index = len(item) % self.size
-        self.table[index].append(item)
+        expandable_slice_number = len(item) % self.count_slices
+
+        if item not in set(self.table[expandable_slice_number]):
+            self.table[expandable_slice_number][self.count_items_each_slice[expandable_slice_number]] = item
+            self.count_items_each_slice[expandable_slice_number] += 1
 
     def search(self, item):
-        index = len(item) % self.size
-        size_slice = len(self.table[index])
+        index = len(item) % self.count_slices
+        size_slice = self.count_items_each_slice[index]
         counter = 0
         while counter < size_slice:
             if self.table[index][counter] == item:
