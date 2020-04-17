@@ -2,7 +2,7 @@
 # https://www.informatics.mccme.ru/mod/statements/view3.php?id=649&chapterid=844#1
 
 
-class SimpleSequence:
+class TrickySequence:
     def __init__(self):
         self.sequence = [None] * 1001
         self.sequence[0] = self.sequence[1] = 1
@@ -18,6 +18,6 @@ class SimpleSequence:
 
 
 if __name__ == '__main__':
-    sequence = SimpleSequence()
+    sequence = TrickySequence()
     number = int(input())
     print(sequence.add_to_sequence(number))
